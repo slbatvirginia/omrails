@@ -13,5 +13,22 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+	permit_params :email, :admin
+
+	index do
+		column :id
+		column :email
+		column :admin
+		column :last_sign_in
+		column :updated_at
+	end
+	form do |f|
+		f.semantic_errors
+		f.inputs do
+			f.input :email
+			f.input :admin
+		end
+		f.actions
+	end
 
 end
