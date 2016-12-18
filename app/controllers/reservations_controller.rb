@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
   # POST /reservations
   def create
     @reservation = current_user.reservations.new(reservation_params)
-    @reservation.slot = DateTime.parse(reservation_params[:slotdate].to_s + " " + reservation_params[:slothour] + ":00:00")
+    @reservation.slot = DateTime.parse(@reservation.slotdate.to_s + " " + @reservation.slothour.to_s + ":00:00")
 
    begin
     if @reservation.save
@@ -40,11 +40,16 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   def update
     @reservation = current_user.reservations.find(params[:id])
-    @reservation.slot = DateTime.parse(reservation_params[:slotdate].to_s + " " + reservation_params[:slothour] + ":00:00")
+    @reservation.slot = DateTime.parse(@reservation.slotdate.to_s + " " + @reservation.slothour.to_s + ":00:00")
+    begin
     if @reservation.update(reservation_params)
       redirect_to @reservation, notice: 'Reservation was successfully updated.' 
     else
       render :edit 
+    end
+    rescue
+	flash[:error] = "That time slot is already taken."
+	render :edit
     end
   end
 
