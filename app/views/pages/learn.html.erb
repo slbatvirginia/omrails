@@ -1,6 +1,12 @@
 <div class="jumbotron">
     <div class="container">
-        <h1>About us</h1>
+        <h1>Reservation Policies Explanation</h1>
+	<% if user_signed_in? %>
+		<p>We think <%=current_user.email%> has classification <%=current_user.classification %></p>
+	<% else %>
+		<p>Since you are not logged in, we can't assign your classification.</p>
+	<% end %>
         <p>Here would go text explaining how to get your proper user account classification  allocated (normally, we'd be using single signon and then authorizing an account with a LDAP lookup).</p>
+	<p>Here would go text explaining which categories of reservations each classification can make.</p>
     </div>
 </div>
