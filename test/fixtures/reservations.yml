@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  slot: 2016-12-17 16:06:41
+  slotdate: 2016-12-17
+  slothour: 1
+  eventname: MyString
+  eventtype: MyString
+
+two:
+  user: two
+  slot: 2016-12-17 16:06:41
+  slotdate: 2016-12-17
+  slothour: 1
+  eventname: MyString
+  eventtype: MyString

@@ -1,0 +1,37 @@
+<%= form_for(reservation) do |f| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label  :slotdate, "Date" %>
+    <%= f.date_select :slotdate , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :slothour , "Hour"%>
+    <%= f.select :slothour , [['midnight',0],['1 am',1],['2am',2],['3am',3],['4am',4],['5am',5],['6am',6],['7am',7],['8am',8],['9am',9],['10am',10],['11am',11],['noon',12],['1pm',13],['2pm',14],['3pm',15],['4pm',16],['5pm',17],['6pm',18],['7pm',19],['8pm',20],['9pm',21],['10pm',22],['11pm',23]] %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :eventname , "Event Name"%>
+    <%= f.text_field :eventname , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :eventtype, "Event Type"%>
+    <%= f.select :eventtype, [["Study Group","s"],["Faculty Function","f"],["Alumni Tour","a"]],class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

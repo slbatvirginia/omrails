@@ -1,0 +1,36 @@
+<div class="container">
+<p>
+  <strong>User:</strong>
+  <%= @reservation.user %>
+</p>
+
+<p>
+  <strong>Slot:</strong>
+  <%= @reservation.slot %>
+</p>
+
+<p>
+  <strong>Slotdate:</strong>
+  <%= @reservation.slotdate %>
+</p>
+
+<p>
+  <strong>Slothour:</strong>
+  <%= @reservation.slothour %>
+</p>
+
+<p>
+  <strong>Eventname:</strong>
+  <%= @reservation.eventname %>
+</p>
+
+<p>
+  <strong>Eventtype:</strong>
+  <%= @reservation.eventtype %>
+</p>
+
+<% if @reservation.user == current_user %>
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<% end %>
+<%= link_to 'Back', reservations_path %>
+</div>

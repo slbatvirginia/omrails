@@ -1,0 +1,40 @@
+<div class="container">
+
+  <h1>Reservations</h1>
+  
+  <table class="table">
+    <thead class_thead_invers">
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Hour</th>
+        <th>Event</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.user.email %></td>
+          <td><%= reservation.slotdate %></td>
+          <td><%= reservation.slothour %>:00</td>
+          <td><%= reservation.eventname %></td>
+          <td><%= reservation.eventtype %></td>
+          <td><%= link_to 'Show', reservation %></td>
+	  <% if reservation.user == current_user %>
+            <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+            <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <% if user_signed_in? %>
+    <%= link_to 'New Reservation', new_reservation_path %>
+  <% end %>
+</div>
