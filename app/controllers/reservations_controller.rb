@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.order(:slot).all
   end
 
   # GET /reservations/1

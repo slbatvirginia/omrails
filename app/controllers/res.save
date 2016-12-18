@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.order('reservations.slot).all
+    @reservations = Reservation.order(:slot).all
   end
 
   # GET /reservations/1
