@@ -47,7 +47,7 @@
 		<% if current_user.classification == 'alum' %>
               		<p><%= link_to "Reserve", new_reservation_path, class: "btn btn-secondary" %></p>
             	<% else %>
-              		<p><%= link_to "Learn More", "#", class: "btn btn-secondary" %></p>
+              		<p><%= link_to "Learn More", learn_path, class: "btn btn-secondary" %></p>
 		<% end %>
 	    <% else %>
               	<p><%= link_to "Log in to Reserve", signin_path, class: "btn btn-secondary" %></p>
