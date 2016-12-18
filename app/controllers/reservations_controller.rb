@@ -40,10 +40,12 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   def update
     @reservation = current_user.reservations.find(params[:id])
-    @reservation.slot = DateTime.parse(@reservation.slotdate.to_s + " " + @reservation.slothour.to_s + ":00:00")
     begin
     if @reservation.update(reservation_params)
-      redirect_to @reservation, notice: 'Reservation was successfully updated.' 
+      @reservation.slot = DateTime.parse(@reservation.slotdate.to_s + " " + @reservation.slothour.to_s + ":00:00")
+      if @reservation.save
+         redirect_to @reservation, notice: 'Reservation was successfully updated.' 
+      end
     else
       render :edit 
     end
