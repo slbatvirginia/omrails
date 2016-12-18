@@ -14,7 +14,7 @@
   <div class="form-group">
     <%= f.label  :slotdate, "Date" %>
     <% if (reservation.user.classification == 'alum') || (reservation.user.classification == nil) %>
-    	<%= f.select :slotdate, [['Friday January 4','20170104'],['Saturday January 5','20170105'],['Sunday January 6, 2017','20170106']],class: "form-control" %>
+    	<%= f.select :slotdate, [['Friday January 4','20170104'],['Saturday January 5','20170105'],['Sunday January 6, 2017','20170106']],class: "custom-select" %>
     <% else %>
     	<%= f.date_select :slotdate , class: "form-control"%>
     <% end %>
@@ -23,9 +23,9 @@
   <div class="form-group">
     <%= f.label :slothour , "Hour"%>
     <% if reservation.user.classification == 'student' %>
-    	<%= f.select :slothour , [['8am',8],['9am',9],['10am',10],['11am',11],['noon',12],['1pm',13],['2pm',14],['3pm',15],['4pm',16],['5pm',17],['6pm',18],['7pm',19],['8pm',20],['9pm',21],['10pm',22]] %>
+    	<%= f.select :slothour , [['8am',8],['9am',9],['10am',10],['11am',11],['noon',12],['1pm',13],['2pm',14],['3pm',15],['4pm',16],['5pm',17],['6pm',18],['7pm',19],['8pm',20],['9pm',21],['10pm',22]], class: "custom-select" %>
     <% else %>
-    	<%= f.select :slothour , [['midnight',0],['1 am',1],['2am',2],['3am',3],['4am',4],['5am',5],['6am',6],['7am',7],['8am',8],['9am',9],['10am',10],['11am',11],['noon',12],['1pm',13],['2pm',14],['3pm',15],['4pm',16],['5pm',17],['6pm',18],['7pm',19],['8pm',20],['9pm',21],['10pm',22],['11pm',23]] %>
+    	<%= f.select :slothour , [['midnight',0],['1 am',1],['2am',2],['3am',3],['4am',4],['5am',5],['6am',6],['7am',7],['8am',8],['9am',9],['10am',10],['11am',11],['noon',12],['1pm',13],['2pm',14],['3pm',15],['4pm',16],['5pm',17],['6pm',18],['7pm',19],['8pm',20],['9pm',21],['10pm',22],['11pm',23]], class: "custom-select" %>
     <% end %>
 
   </div>
@@ -37,15 +37,15 @@
   <div class="form-group">
     <%= f.label :eventtype, "Event Type"%>
     <% if reservation.user.classification == 'student' %>
-    	<%= f.select :eventtype, [["Study Group","s"]],class: "form-control" %>
+    	<%= f.select :eventtype, [["Study Group","s"]],class: "custom-select" %>
     <% else %>
 	<% if reservation.user.classification == 'alum' %>
-    		<%= f.select :eventtype, [["Alumni Tour","a"]],class: "form-control" %>
+    		<%= f.select :eventtype, [["Alumni Tour","a"]],class: "custom-select" %>
 	<% else %>
 		<% if reservation.user.classification == 'faculty' %>
-    			<%= f.select :eventtype, [["Study Group","s"],["Faculty Function","f"],["Alumni Tour","a"]],class: "form-control" %>
+    			<%= f.select :eventtype, [["Study Group","s"],["Faculty Function","f"],["Alumni Tour","a"]],class: "custom-select" %>
 		<% else %>
-    			<%= f.select :eventtype, [["Alumni Tour","a"]],class: "form-control" %>
+    			<%= f.select :eventtype, [["Alumni Tour","a"]],class: "custom-select" %>
 		<% end %>
 	<% end %>
     <% end %>

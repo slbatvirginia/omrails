@@ -1,7 +1,8 @@
 <div class="container">
+<h1>Reservation</h1>
 <p>
   <strong>User:</strong>
-  <%= @reservation.user %>
+  <%= @reservation.user.email %>
 </p>
 
 <p>
@@ -10,22 +11,22 @@
 </p>
 
 <p>
-  <strong>Slotdate:</strong>
+  <strong>Date:</strong>
   <%= @reservation.slotdate %>
 </p>
 
 <p>
-  <strong>Slothour:</strong>
+  <strong>Hour:</strong>
   <%= @reservation.slothour %>
 </p>
 
 <p>
-  <strong>Eventname:</strong>
+  <strong>Event:</strong>
   <%= @reservation.eventname %>
 </p>
 
 <p>
-  <strong>Eventtype:</strong>
+  <strong>Category:</strong>
   <%= @reservation.eventtype %>
 </p>
 
