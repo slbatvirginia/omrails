@@ -4,11 +4,11 @@
 		<h1>Welcome back, 
 		<%= current_user.email %>
 		</h1>
-        	<%= link_to "Learn more »", "#", class: "btn btn-primary btn-lg" %> 
+        	<%= link_to "View Reservations »", reservations_path, class: "btn btn-primary btn-lg" %> 
 	<% else %>
         	<h1>Alderman Library McGregor Room</h1>
         	<p>If Harry Potter had a favorite study place this would be it. Very quiet … often a little dark. A charming favorite. The McGregor Room can now be reserved by libary patrons for special events.</p>
-        	<%= link_to "Learn more »", "#", class: "btn btn-primary btn-lg" %> 
+        	<%= link_to "Learn more »", learn_path, class: "btn btn-primary btn-lg" %> 
 	<% end %>
     </div>
 </div>
@@ -16,18 +16,42 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Study Groups</h2>
-            <p>Have a big group project due? Use the McGregor Room as your meeting spot. Available during normal Alderman operating hours to any University student with an active library account.<p
-            <p><%= link_to "View details and dates", "#", class: "btn btn-secondary" %></p>
+            <p>Have a big group project due? Use the McGregor Room as your meeting spot. Available during normal Alderman operating hours to any University student with an active library account.<p>
+            <% if user_signed_in?  %>
+		<% if current_user.classification == 'student' %>
+              		<p><%= link_to "Reserve", new_reservation_path, class: "btn btn-secondary" %></p>
+            	<% else %>
+              		<p><%= link_to "Learn More", learn_path, class: "btn btn-secondary" %></p>
+		<% end %>
+	    <% else %>
+              	<p><%= link_to "Log in to Reserve", signin_path, class: "btn btn-secondary" %></p>
+            <% end %>
         </div>
         <div class="col-md-4">
             <h2>Faculty Parties</h2>
             <p>The McGregor Room can be reserved for department functions.  Acess and facilities for catering provided in adjacent kitchen.</p>
-            <p><%= link_to "View details and dates", "#", class: "btn btn-secondary" %></p>
+            <% if user_signed_in?  %>
+		<% if current_user.classification == 'faculty' %>
+              		<p><%= link_to "Reserve", new_reservation_path, class: "btn btn-secondary" %></p>
+            	<% else %>
+              		<p><%= link_to "Learn More", learn_path, class: "btn btn-secondary" %></p>
+		<% end %>
+	    <% else %>
+              	<p><%= link_to "Log in to Reserve", signin_path, class: "btn btn-secondary" %></p>
+            <% end %>
         </div>
         <div class="col-md-4">
             <h2>Alumni Tours</h2>
             <p>The McGregor Room is available for special events during Reunion Weekends to alums</p>
-            <p><%= link_to "View details and dates", "#", class: "btn btn-secondary" %></p>
+            <% if user_signed_in?  %>
+		<% if current_user.classification == 'alum' %>
+              		<p><%= link_to "Reserve", new_reservation_path, class: "btn btn-secondary" %></p>
+            	<% else %>
+              		<p><%= link_to "Learn More", "#", class: "btn btn-secondary" %></p>
+		<% end %>
+	    <% else %>
+              	<p><%= link_to "Log in to Reserve", signin_path, class: "btn btn-secondary" %></p>
+            <% end %>
         </div>
     </div>
 </div>

@@ -13,12 +13,13 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-	permit_params :email, :admin
+	permit_params :email, :classification, :admin
 
 	index do
 		column :id
 		column :email
 		column :admin
+		column :classification
 		column :last_sign_in
 		column :updated_at
 	end

@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
       render :new 
     end
    rescue 
-       flash[:error] = "reservation time conflict"
+       flash[:error] = "That time slot is already taken."
       render :new
    end
   end
