@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /reservations
   def index
@@ -13,6 +14,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = current_user.reservations.new
+    @reservation.slotdate = params[:slotdate]
   end
 
   # GET /reservations/1/edit

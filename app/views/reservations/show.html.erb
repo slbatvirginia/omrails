@@ -1,33 +1,23 @@
 <div class="container">
 <h1>Reservation</h1>
 <p>
-  <strong>User:</strong>
-  <%= @reservation.user.email %>
-</p>
-
-<p>
-  <strong>Slot:</strong>
-  <%= @reservation.slot %>
+  <strong>Owner:</strong>
+  <%= link_to @reservation.user.email, user_path(@reservation.user.id) %>
 </p>
 
 <p>
   <strong>Date:</strong>
-  <%= @reservation.slotdate %>
+  <%= @reservation.slot.strftime("%Y-%m-%-d") %>
 </p>
 
 <p>
   <strong>Hour:</strong>
-  <%= @reservation.slothour %>
+  <%= @reservation.slot.strftime("l:%M %p") %>
 </p>
 
 <p>
   <strong>Event:</strong>
   <%= @reservation.eventname %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @reservation.eventtype %>
 </p>
 
 <% if @reservation.user == current_user %>
